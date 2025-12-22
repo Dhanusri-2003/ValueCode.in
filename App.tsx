@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Service, PortfolioItem, ChatMessage, IdeaResponse } from './types';
 import { generateSaaSIdea, chatWithAssistant } from './services/gemini';
 // import './index.css'
+import "./index.css";
+
 
 // --- Professional Icons ---
 
