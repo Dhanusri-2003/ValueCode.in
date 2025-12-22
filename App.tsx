@@ -82,7 +82,7 @@ const Navbar: React.FC = () => (
   <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-10 py-5 glass-card mx-6 my-6 rounded-3xl border-white/10 shadow-2xl transition-all duration-300">
     <div className="flex items-center gap-4">
       <div className="w-11 h-11 bg-midnight rounded-xl flex items-center justify-center font-bold text-xl text-[#FFFFFF] shadow-lg shadow-midnight/40 border border-aquamarine/30">V</div>
-      <span className="text-2xl font-bold tracking-tighter text-[#FFFFFF]">ValueCode<span className="text-aquamarine">.in</span></span>
+      <span className="text-2xl font-bold tracking-tighter text-[#FFFFFF]">ValueCode.in<span className="text-aquamarine">.in</span></span>
     </div>
     
     <div className="hidden lg:flex items-center gap-10 text-sm font-semibold text-[#FFFFFF] uppercase tracking-[0.15em]">
