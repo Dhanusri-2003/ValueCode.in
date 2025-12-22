@@ -155,14 +155,30 @@ const Hero: React.FC = () => {
           Growth Opportunities: ${formData.opportunities}
           Email: ${formData.email}
         `;
-        const res = await generateSaaSIdea(fullContext);
-        setIdea(res);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
+
+        // Send fullContext to n8n webhook only
+    const res = await fetch(
+      "https://n8n.srv1105022.hstgr.cloud/webhook/website-Summary",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fullContext }),
       }
+    );
+
+    if (!res.ok) {
+      console.error("Failed to send data to n8n");
+    } else {
+      console.log("Data sent to n8n successfully");
     }
+
+  } catch (err) {
+    console.error(err);
+  } finally {
+    setLoading(false);
+  }
+}
+        
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
