@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Service, PortfolioItem, ChatMessage, IdeaResponse } from './types';
+// import { generateSaaSIdea, chatWithAssistant } from './services/gemini';
 import { generateSaaSIdea, chatWithAssistant } from './services/gemini';
 // import './index.css'
 import "./index.css";
@@ -155,31 +156,41 @@ const Hero: React.FC = () => {
           Growth Opportunities: ${formData.opportunities}
           Email: ${formData.email}
         `;
-
-        // Send fullContext to n8n webhook only
-    const res = await fetch(
-      "https://n8n.srv1105022.hstgr.cloud/webhook/website-Summary",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fullContext }),
+          const res = await generateSaaSIdea(fullContext);
+        setIdea(res);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
       }
-    );
-
-    if (!res.ok) {
-      console.error("Failed to send data to n8n");
-    } else {
-      console.log("Data sent to n8n successfully");
     }
-
-  } catch (err) {
-    console.error(err);
-  } finally {
-    setLoading(false);
-  }
-}
-        
   };
+//         // Send fullContext to n8n webhook only
+//     const res = await fetch(
+//       "https://n8n.srv1173904.hstgr.cloud/webhook/website-Summary",
+//       {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ fullContext }),
+//       }
+//     );
+
+//     if (!res.ok) {
+//       console.error("Failed to send data to n8n");
+//     } else {
+//       console.log("Data sent to n8n successfully");
+//     }
+//          const responseData = await res.json(); // 👈 THIS is the response
+//       console.log("n8n response:", responseData);
+
+//   } catch (err) {
+//     console.error(err);
+//   } finally {
+//     setLoading(false);
+//   }
+// }
+        
+//   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') handleNext();
