@@ -47,7 +47,7 @@
 // };
 import { IdeaResponse, ChatMessage } from "../types";
 
-const N8N_BASE_WEBHOOK = "https://n8n.srv1173904.hstgr.cloud/webhook";
+const N8N_BASE_WEBHOOK = "https://n8n.srv1173904.hstgr.cloud/webhook/website-Summary";
 
 export const generateSaaSIdea = async (prompt: string): Promise<IdeaResponse> => {
   const res = await fetch(`${N8N_BASE_WEBHOOK}/generate-saas`, {
